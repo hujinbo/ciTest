@@ -16,7 +16,13 @@ jobs:
         registry-url: 'https://registry.yarnpkg.com'
     - run: yarn install --frozen-lockfile
     - run: yarn build
-
+    -
+      name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist
+        path: index_min.html
+  
   build:
     runs-on: ubuntu-latest
     steps:
