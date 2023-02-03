@@ -15,7 +15,13 @@ jobs:
         repository: hujinbo/hujinbo.github.io
         ref: hexo
         submodules: true
-  
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '14.x'
+        registry-url: 'https://registry.yarnpkg.com'
+    - run: yarn install --frozen-lockfile
+    
+    
   build-package:
     runs-on: ubuntu-latest
     steps:
