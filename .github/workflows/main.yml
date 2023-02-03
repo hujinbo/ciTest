@@ -6,6 +6,16 @@ on:
       - "main"
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout tools repo
+      uses: actions/checkout@v3
+      with:
+        repository: hujinbo/hujinbo.github.io
+        ref: hexo
+        submodules: true
+  
   build-package:
     runs-on: ubuntu-latest
     steps:
