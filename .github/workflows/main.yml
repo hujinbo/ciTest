@@ -1,4 +1,4 @@
-name: ci
+name: Deploy
 
 on:
   push:
@@ -24,9 +24,16 @@ jobs:
         cd /tmp
         wget -c https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-1-amd64.deb
         sudo dpkg -i pandoc-2.19.2-1-amd64.deb
-    - run: yarn install --frozen-lockfile
-    - run: yarn build-dev
-    
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+    - name: Build package
+      run: yarn build-dev
+    -
+      name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: site
+        path: public
     
   build-package:
     runs-on: ubuntu-latest
