@@ -5,6 +5,6 @@
     "html-minifier": "^4.0.0"
   },
   "scripts": {
-    "build": "html-minifier index.html -o dist/index.html"
+    "build": "html-minifier index.html -o index_min.html"
   }
 }
