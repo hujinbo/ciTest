@@ -39,7 +39,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: source
-        path: ./
+        path: /home/runner/work/ciTest/ciTest
 
   build-images:
     runs-on: ubuntu-latest
