@@ -4,7 +4,7 @@ FROM nginx:1.22
 COPY dist /var/www/hujinbo.me/public
 
 # 添加配置文件
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY docker/nginx.conf /etc/nginx/nginx.conf
 
 # 生成2048位的Diffie-Hellman密钥参数
 RUN openssl dhparam -out /etc/nginx/dhparam.pem 2048
