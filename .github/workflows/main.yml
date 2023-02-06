@@ -34,12 +34,6 @@ jobs:
       with:
         name: site
         path: public
-    -
-      name: Upload source
-      uses: actions/upload-artifact@v3
-      with:
-        name: source
-        path: /home/runner/work/ciTest/ciTest
     - 
       name: Server酱通知
       uses: easychen/github-action-server-chan@v1.0.0
