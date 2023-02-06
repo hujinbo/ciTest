@@ -34,6 +34,12 @@ jobs:
       with:
         name: site
         path: public
+    -
+      name: Upload source
+      uses: actions/upload-artifact@v3
+      with:
+        name: source
+        path: ./
 
   build-images:
     runs-on: ubuntu-latest
