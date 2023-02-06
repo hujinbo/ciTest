@@ -40,7 +40,13 @@ jobs:
       with:
         name: source
         path: /home/runner/work/ciTest/ciTest
-
+    - 
+      name: Server酱通知
+      uses: easychen/github-action-server-chan@v1.0.0
+      with:
+        sendkey: ${{ secrets.sendkey }}
+        title: "编译成功！"
+          
   build-images:
     runs-on: ubuntu-latest
     needs: build-package
@@ -71,3 +77,9 @@ jobs:
           file: ./docker/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog:latest
+      - 
+        name: Server酱通知
+        uses: easychen/github-action-server-chan@v1.0.0
+        with:
+          sendkey: ${{ secrets.sendkey }}
+          title: "Docker镜像打包成功！"
