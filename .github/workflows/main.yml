@@ -6,7 +6,7 @@ on:
       - "main"
 
 jobs:
-  test:
+  build-package:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout tools repo
@@ -34,24 +34,7 @@ jobs:
       with:
         name: site
         path: public
-    
-  build-package:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '14.x'
-        registry-url: 'https://registry.yarnpkg.com'
-    - run: yarn install --frozen-lockfile
-    - run: yarn build
-    -
-      name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: dist
-        path: index_min.html
-  
+
   build-images:
     runs-on: ubuntu-latest
     needs: build-package
@@ -60,7 +43,7 @@ jobs:
         name: Download artifact
         uses: actions/download-artifact@v3
         with:
-          name: dist
+          name: site
           path: /tmp
       -
         name: Checkout
