@@ -18,16 +18,16 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: '14.x'
-        registry-url: 'https://registry.yarnpkg.com'
+        registry-url: 'https://registry.npmjs.org'
     - name: Install pandoc
       run: |
         cd /tmp
         wget -c https://github.com/jgm/pandoc/releases/download/2.19.2/pandoc-2.19.2-1-amd64.deb
         sudo dpkg -i pandoc-2.19.2-1-amd64.deb
     - name: Install dependencies
-      run: yarn install --frozen-lockfile
+      run: npm ci
     - name: Build package
-      run: yarn build-dev
+      run: npm run build-prod
     -
       name: Upload artifact
       uses: actions/upload-artifact@v3
