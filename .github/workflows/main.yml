@@ -24,7 +24,13 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     - name: Build package
-      run: yarn run build-prod
+      run: yarn run build-dev
+    -
+      name: Upload 
+      uses: actions/upload-artifact@v3
+      with:
+        name: source
+        path: ./
     -
       name: Upload artifact
       uses: actions/upload-artifact@v3
