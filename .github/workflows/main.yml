@@ -15,6 +15,10 @@ jobs:
         repository: hujinbo/hujinbo.github.io
         ref: hexo
         submodules: true
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '14'
+        registry-url: 'https://registry.yarnpkg.com'
     - name: Install pandoc
       run: brew install pandoc
     - name: Install dependencies
