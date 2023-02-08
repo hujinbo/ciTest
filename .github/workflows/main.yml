@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-package:
-    runs-on: macos-12
+    runs-on: macos-11
     steps:
     - name: Checkout tools repo
       uses: actions/checkout@v3
@@ -17,12 +17,12 @@ jobs:
         submodules: true
     - uses: actions/setup-node@v3
       with:
-        node-version: '14.x'
+        node-version: '14'
         registry-url: 'https://registry.yarnpkg.com'
     - name: Install pandoc
       run: brew install pandoc
     - name: Install dependencies
-      run: yarn install
+      run: yarn install --frozen-lockfile
     - name: Build package
       run: yarn run build-prod
     -
